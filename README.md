@@ -1,5 +1,5 @@
 # delete_tweets
-Twitter is becoming a 🔥🗑️, so let's delete all of our tweets!
+Twitter is becoming a 🗑️🔥, so let's delete all of our tweets!
 
 # Overview
 
