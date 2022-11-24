@@ -1,5 +1,7 @@
 library(rtweet)
 library(tidyverse)
+library(dplyr)
+library(purrr)
 
 # Auth into Twitter
 auth_setup_default()
@@ -20,13 +22,11 @@ head(my_timeline, 5)
 colnames(my_timeline)
 
 # Create a list of all tweets
-tweet_ids <- my_timeline$id_str
+# tweet_ids <- my_timeline$id_str
 
 # Delete a single tweet using the post_destroy parameter
 post_destroy(tweet_ids[1])
 
-# Do a little loop to delete all tweets
-for (i in seq_along(tweet_ids)) {
-  message("Deleting Tweet ", i, " of ", length(tweet_ids))
-  post_destroy(tweet_ids = tweet_ids[i])
-}
+# Do the delete!
+delete_tweets <- my_timeline %>% 
+  mutate(success = map(id_str, possibly(post_destroy, otherwise = "fail")))
