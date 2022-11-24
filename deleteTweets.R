@@ -22,11 +22,14 @@ head(my_timeline, 5)
 colnames(my_timeline)
 
 # Create a list of all tweets
-# tweet_ids <- my_timeline$id_str
+tweet_ids <- my_timeline$id_str
 
-# Delete a single tweet using the post_destroy parameter
-post_destroy(tweet_ids[1])
+# Convert to data frame
+tweet_df <- as.data.frame(tweet_ids)
+head(tweet_df)
 
-# Do the delete!
-delete_tweets <- my_timeline %>% 
-  mutate(success = map(id_str, possibly(post_destroy, otherwise = "fail")))
+# Do a loop to delete the tweets
+for (i in seq_along(tweet_df$tweet_ids)) {
+  message("Deleting tweet number ", i)
+  post_destroy(tweet_df$tweet_ids[i])
+}
