@@ -1,7 +1,6 @@
 library(rtweet)
 library(tidyverse)
 library(dplyr)
-library(purrr)
 
 # Auth into Twitter
 auth_setup_default()
