@@ -1,6 +1,5 @@
 library(rtweet)
 library(tidyverse)
-library(ggplot2)
 
 # Auth into Twitter
 auth_setup_default()
