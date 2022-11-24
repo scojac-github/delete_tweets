@@ -24,7 +24,7 @@ tweet_df <- as.data.frame(tweet_ids)
 
 # Do a loop to delete the tweets
 for (i in seq_along(tweet_df$tweet_ids)) {
-  message("Deleting tweet number ", i)
+  message("Deleting tweet number ", i, " of ", nrow(tweet_df))
   post_destroy(tweet_df$tweet_ids[i])
 }
 
